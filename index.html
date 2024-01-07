@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Password Generator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .form-container {
+            width: 300px;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 12px;
+            color: #555;
+        }
+
+        input[type="number"], input[type="checkbox"], input[type="submit"] {
+            margin-bottom: 20px;
+            width: calc(100% - 6px);
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="number"]:focus, input[type="checkbox"]:focus, input[type="submit"]:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        h2 {
+            margin-top: 30px;
+            font-size: 18px;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Password Generator!</h1>
+    <div class="form-container">
+        <form action="/generate" method="post">
+            <label for="length">Password Length:</label>
+            <input type="number" id="length" name="length" min="1" required>
+            
+            <label><input type="checkbox" name="use_letters">Include Letters</label>
+            <label><input type="checkbox" name="use_numbers">Include Numbers</label>
+            <label><input type="checkbox" name="use_symbols">Include Symbols</label>
+            
+            <input type="submit" value="Generate Password">
+        </form>
+
+        {% if password %}
+            <h2>Your generated password is: {{ password }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
